@@ -1,5 +1,6 @@
 <?php
-include_once __DIR__ . '/../modelo/persona.php';
+require_once __DIR__ . '/../Model/persona.php';
+
 
 class PersonaControl {
     private $objPersona;
@@ -34,4 +35,9 @@ class PersonaControl {
     public function borrar($nroDni) {
         return $this->objPersona->borrarPersona($nroDni);
     }
+
+    public function listarPersonas(): array {
+        return $this->objPersona->listarPersonas();
+    }
+
 }

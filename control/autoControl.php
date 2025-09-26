@@ -1,8 +1,8 @@
 <?php
 
 
-include_once __DIR__ . '/../modelo/auto.php';
-include_once __DIR__ . '/../modelo/conexion/baseDatos.php';
+include_once __DIR__ . '/../Model/auto.php';
+include_once __DIR__ . '/../Model/Conexion/baseDatos.php';
 class AutoControl {
     private $objAuto;
 
@@ -39,6 +39,10 @@ class AutoControl {
     return $auto;
 }
 
+    //Buscar auto por dni duenio
+    public function buscarPorDni($dniDuenio) {
+        return $this->objAuto->buscarAutoPorDni($dniDuenio);
+    }
 
     // Modificar datos de un auto
     public function modificar($patente, $marca, $modelo, $dniDuenio) {
@@ -50,8 +54,8 @@ class AutoControl {
         return $this->objAuto->borrarAuto($patente);
     }
 
-
-public function listarAutoConDuenio() {
+    // Listamos autos con datos del dueño
+    public function listarAutoConDuenio() {
     $autos = [];
     try {
         $sql = "SELECT a.Patente, a.Marca, a.Modelo, p.Nombre, p.Apellido

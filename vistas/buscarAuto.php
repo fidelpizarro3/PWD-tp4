@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Buscar Auto</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        form { margin-bottom: 20px; }
-        label { font-weight: bold; }
-        input[type="text"] { padding: 5px; }
-        button { padding: 5px 10px; }
-    </style>
+    <link rel="stylesheet" href="../Public/css/estilos.css">
     <script>
         function validarFormulario() {
             const patente = document.getElementById("patente").value.trim();

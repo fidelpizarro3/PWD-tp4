@@ -117,4 +117,25 @@ public function InsertarAuto(){
         }
         return $auto;
     }
+
+    public function buscarAutoPorDni($dniDuenio) {
+        $autos = [];
+        try {
+            $sql = "SELECT * FROM auto WHERE DniDuenio = :dniDuenio";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':dniDuenio', $dniDuenio);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $auto = new Auto();
+                $auto->setPatente($row['Patente']);
+                $auto->setMarca($row['Marca']);
+                $auto->setModelo($row['Modelo']);
+                $auto->setDniDuenio($row['DniDuenio']);
+                $autos[] = $auto;
+            }
+        } catch (PDOException $e) {
+            echo "Error al buscar autos por DNI: " . $e->getMessage();
+        }
+        return $autos;
+    }
 }

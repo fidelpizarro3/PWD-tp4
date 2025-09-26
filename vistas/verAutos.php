@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__ . '/../control/autoControl.php';
+    include_once __DIR__ . '/../Control/autoControl.php';
 
     $autoControl = new AutoControl();
     $autos = $autoControl->listarAutoConDuenio();

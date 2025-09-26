@@ -1,5 +1,5 @@
 <?php
-include_once 'baseDatos.php';
+include_once __DIR__ . '/Conexion/baseDatos.php';
 
 class Persona {
     private $nroDni;
@@ -167,4 +167,29 @@ public function InsertarPersona(){
         }
         return $persona;
     }
+
+    public function listarPersonas() {
+    $personas = [];
+    try {
+        $sql = "SELECT * FROM persona";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $p = new Persona();
+            $p->setNroDni($row['NroDni']);
+            $p->setApellido($row['Apellido']);
+            $p->setNombre($row['Nombre']);
+            $p->setFechaNacimiento($row['fechaNac']);
+            $p->setTelefono($row['Telefono']);
+            $p->setDomicilio($row['Domicilio']);
+
+            $personas[] = $p;
+        }
+    } catch (PDOException $e) {
+        echo "Error al listar personas: " . $e->getMessage();
+    }
+    return $personas;
 }
+}
+
