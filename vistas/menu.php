@@ -22,6 +22,9 @@
             <a href="ej4duplicado/nuevaPersona.php" class="list-group-item list-group-item-action">
                 Ejercicio 4 (Duplicado) - Nueva Persona
             </a>
+            <a href="ej6/cambioDuenio.php" class="list-group-item list-group-item-action">
+                Ejercicio 6 - Cambio de Dueño
+            </a>
             <a href="ej7/buscarPersona.html" class="list-group-item list-group-item-action">
                 Ejercicio 7 - Buscar y Actualizar Persona
             </a>

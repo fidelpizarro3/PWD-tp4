@@ -72,4 +72,8 @@ class AutoControl {
         return $autos;
     }
 
+    public function cambiarDuenio($patente, $dniNuevoDuenio) {
+    return $this->objAuto->cambiarDuenio($patente, $dniNuevoDuenio);
+}
+
 }

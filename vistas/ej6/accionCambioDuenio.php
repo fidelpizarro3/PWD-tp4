@@ -1,69 +1,58 @@
 <?php
-require_once __DIR__ . '/../../Control/autoControl.php';
-require_once __DIR__ . '/../../Control/personaControl.php';
+include_once "../../control/autoControl.php";
+include_once "../../control/personaControl.php";
+include_once "../../utils/request.php";
 
-$patente = isset($_POST['patente']) ? trim($_POST['patente']) : '';
-$dni     = isset($_POST['dniNuevo']) ? trim($_POST['dniNuevo']) : '';
+$patente = Request::post("patente");
+$dni = Request::post("dni");
 
-$mensaje = '';
-$ok      = false;
+$autoControl = new AutoControl();
+$personaControl = new PersonaControl();
 
-if ($patente === '' || $dni === '') {
-    $mensaje = "Debe ingresar patente y DNI.";
-} else {
-    $autoCtrl    = new AutoControl();
-    $personaCtrl = new PersonaControl();
+$auto = $autoControl->buscar($patente);
+$persona = $personaControl->buscar($dni);
 
-    $persona = $personaCtrl->buscar($dni);   
-    $auto    = $autoCtrl->buscar($patente);   
+$resultado = false;
+$mensaje = "";
 
-    if (!$auto) {
-        $mensaje = "No se encontro el auto con patente " . htmlspecialchars($patente) . ".";
-    } elseif (!$persona) {
-        $mensaje = "No se encontro la persona con DNI " . htmlspecialchars($dni) . ".";
+if ($auto && $persona) {
+    // Cambiar dueño
+    $resultado = $autoControl->cambiarDuenio($patente, $dni);
+    if ($resultado) {
+        $mensaje = " El dueño del auto con patente <b>$patente</b> fue actualizado correctamente.";
     } else {
-        $ok = $autoCtrl->cambiarDuenio($patente, $dni);
-        $mensaje = $ok
-            ? "El duenio del auto <strong>" . htmlspecialchars($patente) . "</strong> fue cambiado correctamente."
-            : "No se pudo realizar el cambio (verifique la patente y que el DNI exista).";
+        $mensaje = " No se pudo realizar el cambio de dueño.";
+    }
+} else {
+    if (!$auto) {
+        $mensaje .= " No se encontró un auto con la patente ingresada.<br>";
+    }
+    if (!$persona) {
+        $mensaje .= " No se encontró una persona con el DNI ingresado.<br>";
     }
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Resultado Cambio de Duenio</title>
+  <meta charset="UTF-8">
+  <title>Resultado Cambio Dueño</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <a href="../menu.php" class="btn btn-outline-primary">Volver al Menú</a>
 </head>
-<body class="bg-light">
-    <div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <div class="card shadow-sm">
-            <div class="card-header">Resultado</div>
-            <div class="card-body">
-            <div class="alert alert-<?= $ok ? 'success' : 'danger' ?> text-center">
-                <?= $mensaje ?>
-            </div>
-            <div class="text-center d-flex gap-2 justify-content-center">
-                <a href="CambioDuenio.php" class="btn btn-secondary">Volver</a>
-                <a href="../menu.php" class="btn btn-outline-primary">Menú</a>
-            </div>
-            </div>
-        </div>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+    <h2 class="text-center mb-4 text-primary">Resultado del Cambio de Dueño</h2>
 
-        <?php if (!$ok && $patente !== '' && $dni !== '') { ?>
-            <div class="mt-3 small text-muted">
-            <ul>
-                <li>¿La patente en la BD tiene espacios o guiones? (ej: <code>AA-123-BB</code>)</li>
-                <li>¿El DNI <code><?= htmlspecialchars($dni) ?></code> existe en la tabla <code>persona</code>?</li>
-                <li>¿Hay restricción FOREIGN KEY sobre <code>auto.DniDuenio</code>? Si no existe la persona, el UPDATE falla.</li>
-            </ul>
-            </div>
-        <?php } ?>
-        </div>
+    <div class="alert <?= $resultado ? 'alert-success' : 'alert-danger' ?>" role="alert">
+      <?= $mensaje ?>
     </div>
-     </div>
+
+    <div class="text-center">
+      <a href="CambioDuenio.php" class="btn btn-outline-primary">Volver</a>
+    </div>
+  </div>
+
+  <script src="../../Public/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

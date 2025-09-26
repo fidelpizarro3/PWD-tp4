@@ -138,4 +138,18 @@ public function InsertarAuto(){
         }
         return $autos;
     }
+
+    public function cambiarDuenio($patente, $dniNuevoDuenio) {
+    try {
+        $sql = "UPDATE auto SET DniDuenio = :dni WHERE Patente = :patente";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":dni", $dniNuevoDuenio);
+        $stmt->bindParam(":patente", $patente);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+         $e->getMessage();
+        return false;
+    }
+}
+
 }
