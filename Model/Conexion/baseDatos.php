@@ -2,10 +2,9 @@
 class BaseDatos {
     private $host = "localhost";
     private $db = "infoautos";
-    private $user = "root";    // tu usuario de MySQL
-    private $pass = "";        // tu contraseña de MySQL
-    private $conexion;         // acá guardamos el PDO
-
+    private $user = "root";   
+    private $pass = "";        
+    private $conexion;         
     public function __construct() {
         try {
             $this->conexion = new PDO(

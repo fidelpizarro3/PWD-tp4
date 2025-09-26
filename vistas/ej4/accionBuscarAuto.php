@@ -13,6 +13,7 @@ $auto = $control->buscar($patente); // usamos el controlador
 <head>
     <meta charset="UTF-8">
     <title>Resultado Búsqueda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/estilos.css">
         <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
 
