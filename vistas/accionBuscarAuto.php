@@ -1,7 +1,8 @@
 <?php
 include_once "../control/autoControl.php";
+include_once "../utils/Request.php"; // agrego la utils pra el encapsulado
 
-$patente = $_POST['patente'];
+$patente = Request::post('patente'); // ahora encapsulado
 
 $control = new AutoControl();
 $auto = $control->buscar($patente); // usamos el controlador
