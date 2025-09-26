@@ -1,6 +1,7 @@
 <?php
 include_once 'baseDatos.php';
-
+//test
+$variabletest = 0;
 class Persona {
     private $nroDni;
     private $apellido;
