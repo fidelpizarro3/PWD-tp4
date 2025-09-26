@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__ . '/../Control/autoControl.php';
+    include_once __DIR__ . '/../../Control/autoControl.php';
 
     $autoControl = new AutoControl();
     $autos = $autoControl->listarAutoConDuenio();
@@ -12,6 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
+
     <title>Document</title>
 </head>
 <body>

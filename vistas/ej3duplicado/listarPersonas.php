@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Control/personaControl.php';
+require_once __DIR__ . '/../../control/personaControl.php';
 
 $personaCtrl = new PersonaControl();
 $personas = $personaCtrl->listarPersonas();
@@ -11,6 +11,8 @@ $personas = $personaCtrl->listarPersonas();
     <title>Listado de Personas</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
+
 </head>
 <body class="bg-light">
 
@@ -43,7 +45,7 @@ $personas = $personaCtrl->listarPersonas();
                     <td><?= htmlspecialchars($apellido) ?></td>
                     <td><?= htmlspecialchars($nombre) ?></td>
                     <td>
-                    <form action="autosPersonas.php" method="post" style="display:inline;">
+                    <form action="./autosPersonas.php" method="post" style="display:inline;">
                         <input type="hidden" name="dni" value="<?= htmlspecialchars($dni) ?>">
                         <button type="submit" class="btn btn-sm btn-primary">
                         Ver autos

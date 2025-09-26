@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Control/personaControl.php';
+require_once __DIR__ . '/../../Control/personaControl.php';
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405);

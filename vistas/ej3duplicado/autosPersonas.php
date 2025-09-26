@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../Control/personaControl.php';
-require_once __DIR__ . '/../Control/autoControl.php';
+require_once __DIR__ . '/../../Control/personaControl.php';
+require_once __DIR__ . '/../../Control/autoControl.php';
 
 /* === Recibir SOLO por POST === */
 $dni = $_POST['dni'] ?? $_GET['dni'] ?? '';
@@ -24,6 +24,8 @@ $autos   = $autoCtrl->buscarPorDni($dni);  // método que devuelve los autos del
     <title>Autos de la Persona</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/estilos.css">
+        <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
+
 </head>
 <body class="bg-light">
     <div class="container py-4">
@@ -85,7 +87,7 @@ $autos   = $autoCtrl->buscarPorDni($dni);  // método que devuelve los autos del
         </div>
 
         <div class="mt-3 text-center">
-        <a href="/PWD-tp4/Vistas/listarPersonas.php" class="btn btn-secondary">Volver al listado</a>
+        <a href="./listarPersonas.php" class="btn btn-secondary">Volver al listado</a>
         </div>
 
     <?php 

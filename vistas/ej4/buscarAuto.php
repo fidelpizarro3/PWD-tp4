@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Buscar Auto</title>
-    <link rel="stylesheet" href="../Public/css/estilos.css">
+    <link rel="stylesheet" href="../../public/css/estilos.css">
+        <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
     <script>
         function validarFormulario() {
             const patente = document.getElementById("patente").value.trim();
@@ -17,7 +18,7 @@
 </head>
 <body>
     <h1>Buscar Auto</h1>
-    <form action="accionBuscarAuto.php" method="post" onsubmit="return validarFormulario()">
+    <form action="./accionBuscarAuto.php" method="post" onsubmit="return validarFormulario()">
         <label for="patente">Ingrese la patente:</label>
         <input type="text" id="patente" name="patente">
         <button type="submit">Buscar</button>

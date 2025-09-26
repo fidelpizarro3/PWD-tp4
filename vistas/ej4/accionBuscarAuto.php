@@ -1,6 +1,6 @@
 <?php
-include_once "../Control/autoControl.php";
-include_once "../Utils/Request.php"; // agrego la utils pra el encapsulado
+include_once "../../Control/autoControl.php";
+include_once "../../Utils/Request.php"; // agrego la utils pra el encapsulado
 
 $patente = Request::post('patente'); // ahora encapsulado
 
@@ -13,7 +13,9 @@ $auto = $control->buscar($patente); // usamos el controlador
 <head>
     <meta charset="UTF-8">
     <title>Resultado Búsqueda</title>
-    <link rel="stylesheet" href="../public/css/estilos.css">
+    <link rel="stylesheet" href="../../public/css/estilos.css">
+        <a href="../menu.php" class="btn btn-secondary">Volver al menú</a>
+
 </head>
 <body>
     <h1>Resultado de la búsqueda</h1>
