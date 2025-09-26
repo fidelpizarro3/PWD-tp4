@@ -88,7 +88,7 @@ public function InsertarPersona(){
         }
 
         catch(PDOException $e){
-            echo "error al insertar persona: " . $e->getMessage();
+            $e->getMessage();
             $insercion = false;
         }
         return $insercion;  
@@ -107,7 +107,7 @@ public function InsertarPersona(){
             }
         }
         catch(PDOException $e){
-            echo "error al borrar persona: " . $e->getMessage();
+            $e->getMessage();
         }
         return $resultado;
 
@@ -139,7 +139,7 @@ public function InsertarPersona(){
             }
         
         } catch(PDOException $e) {
-            echo "Error al modificar persona: " . $e->getMessage();
+            $e->getMessage();
             $modificado = false;
         }
         return $modificado;
@@ -187,7 +187,7 @@ public function InsertarPersona(){
             $personas[] = $p;
         }
     } catch (PDOException $e) {
-        echo "Error al listar personas: " . $e->getMessage();
+        $e->getMessage();
     }
     return $personas;
 }

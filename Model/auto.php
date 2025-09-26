@@ -58,7 +58,7 @@ public function InsertarAuto(){
                 $resultado = true;
             }
     } catch (PDOException $e) {
-        echo "Error al insertar el auto: " . $e->getMessage();
+        $e->getMessage();
     }
     return $resultado;
 }
@@ -72,7 +72,7 @@ public function InsertarAuto(){
                 $resultado = true;
             }
         } catch (PDOException $e) {
-            echo "Error al borrar el auto: " . $e->getMessage();
+            $e->getMessage();
         }
         return $resultado;
     }
@@ -92,7 +92,7 @@ public function InsertarAuto(){
                 $resultado = true;
             }
         } catch (PDOException $e) {
-            echo "Error al modificar el auto: " . $e->getMessage();
+            $e->getMessage();
         }
         return $resultado;
     }
@@ -113,7 +113,7 @@ public function InsertarAuto(){
                 $auto->setDniDuenio($resultado['DniDuenio']);
             }
         } catch (PDOException $e) {
-            echo "Error al buscar el auto: " . $e->getMessage();
+            $e->getMessage();
         }
         return $auto;
     }
@@ -134,7 +134,7 @@ public function InsertarAuto(){
                 $autos[] = $auto;
             }
         } catch (PDOException $e) {
-            echo "Error al buscar autos por DNI: " . $e->getMessage();
+            $e->getMessage();
         }
         return $autos;
     }
