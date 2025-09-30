@@ -48,11 +48,16 @@ public function InsertarAuto(){
             VALUES (:patente, :marca, :modelo, :dniDuenio)";
 
             $stmt = $this->conn->prepare($sql);
+            
+            $patente = $this->getPatente();
+            $marca = $this->getMarca();
+            $modelo = $this->getModelo();
+            $dniDuenio = $this->getDniDuenio();
 
-            $stmt->bindParam(':patente', $this->getPatente());
-            $stmt->bindParam(':marca', $this->getMarca());
-            $stmt->bindParam(':modelo', $this->getModelo());
-            $stmt->bindParam(':dniDuenio', $this->getDniDuenio());
+            $stmt->bindParam(':patente', $patente);
+            $stmt->bindParam(':marca', $marca);
+            $stmt->bindParam(':modelo', $modelo);
+            $stmt->bindParam(':dniDuenio', $dniDuenio);
         
             if($stmt->execute()) {
                 $resultado = true;

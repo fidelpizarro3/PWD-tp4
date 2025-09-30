@@ -22,7 +22,7 @@
             <a href="ej4duplicado/nuevaPersona.php" class="list-group-item list-group-item-action">
                 Ejercicio 4 (Duplicado) - Nueva Persona
             </a>
-            <a href="ej5/altaAuto.php" class="list-group-item list-group-item-action">
+            <a href="ej5/nuevoAuto.php" class="list-group-item list-group-item-action">
                 Ejercicio 5 - Alta de Auto
             </a>
             <a href="ej6/cambioDuenio.php" class="list-group-item list-group-item-action">
